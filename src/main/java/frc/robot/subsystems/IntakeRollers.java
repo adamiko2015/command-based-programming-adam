@@ -20,10 +20,18 @@ public class IntakeRollers extends SubsystemBase {
   public void periodic() {}
 
   public void setState(IntakeRollersState wantedState) { // I'm assuming that out is 1
-    if(wantedState == IntakeRollersState.OUT) motor.set(1);
-    else if(wantedState == IntakeRollersState.IN) motor.set(-1);
-    else motor.set(0);
-
+    switch(wantedState) {
+      case OUT:
+        motor.set(Constants.IntakeRollers.OUT_STATE_MOTOR_SPEED);
+        break;
+      case IN:
+        motor.set(Constants.IntakeRollers.IN_STATE_MOTOR_SPEED);
+        break;
+      case OFF:
+        motor.set(0);
+        break;
+    }
+    
     this.state = wantedState;
   }
 

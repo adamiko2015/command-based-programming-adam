@@ -26,10 +26,15 @@ public class ElevatorSubsystem extends SubsystemBase {
   public void simulationPeriodic() {}
 
   public void setState(ElevatorState state) {
-    if(state == ElevatorState.TOP) {
-      motor.set(1);
-    } else if(state == ElevatorState.BOTTOM) {
-      motor.set(-1);
+    switch(state) {
+      case TOP:
+        motor.set(Constants.Elevator.TOP_STATE_MOTOR_SPEED);
+        break;
+      case BOTTOM:
+        motor.set(Constants.Elevator.BOTTOM_STATE_MOTOR_SPEED);
+        break;
+      default:
+        break;
     }
   }
 
@@ -38,9 +43,9 @@ public class ElevatorSubsystem extends SubsystemBase {
   }
 
   public ElevatorState getState() {
-    if(encoder.get() == 10) {
+    if(encoder.get() == Constants.Elevator.TOP_ENCODER_VALUE) {
       return ElevatorState.TOP;
-    } else if(encoder.get() == 0) {
+    } else if(encoder.get() == Constants.Elevator.BOTTOM_ENCODER_VALUE) {
       return ElevatorState.BOTTOM;
     } else {
       return ElevatorState.INTERMEDIATE;

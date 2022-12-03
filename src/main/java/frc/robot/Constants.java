@@ -14,16 +14,20 @@ package frc.robot;
  */
 public final class Constants {
     public final class IntakeArm {
-        // Victors
         public static final int VICTOR_PORT = 1;
 
         public static final int OPEN_SWITCH_PORT = 2;
         public static final int CLOSED_SWITCH_PORT = 3;
         
+        public static final double OPEN_STATE_MOTOR_SPEED = 1;
+        public static final double CLOSED_STATE_MOTOR_SPEED = -1;
     }
 
     public final class IntakeRollers {
         public static final int VICTOR_PORT = 2;
+
+        public static final double OUT_STATE_MOTOR_SPEED = 1;
+        public static final double IN_STATE_MOTOR_SPEED = -1;
     }
 
     public final class Elevator {
@@ -31,5 +35,11 @@ public final class Constants {
 
         public static final int ENCODER_PORT_A = 0;
         public static final int ENCODER_PORT_B = 1;
+
+        public static final int TOP_ENCODER_VALUE = 10;
+        public static final int BOTTOM_ENCODER_VALUE = 0;
+
+        public static final double TOP_STATE_MOTOR_SPEED = 1;
+        public static final double BOTTOM_STATE_MOTOR_SPEED = -1;
     }
 }

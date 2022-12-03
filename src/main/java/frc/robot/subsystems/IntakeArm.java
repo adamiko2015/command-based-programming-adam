@@ -23,9 +23,15 @@ public class IntakeArm extends SubsystemBase {
   @Override
   public void periodic() {}
 
-  public void setState(IntakeArmState state) {
-    if(state == IntakeArmState.OPEN) motor.set(1);
-    else if(state == IntakeArmState.CLOSED) motor.set(-1);
+  public void setState(IntakeArmState wantedState) {
+    switch(wantedState) {
+      case OPEN:
+        motor.set(Constants.IntakeArm.OPEN_STATE_MOTOR_SPEED);
+      case CLOSED:
+        motor.set(Constants.IntakeArm.CLOSED_STATE_MOTOR_SPEED);
+      default:
+        break;
+    }
   }
 
   public void zeroMotor() {
